@@ -1,4 +1,4 @@
-<%@ page import="model.UserBean" %>
+
 <%--
   Created by IntelliJ IDEA.
   User: New user
@@ -11,6 +11,19 @@
     <title>Logged in</title>
 </head>
 <body>
-  <h1>Well done, you managed to log in!</h1>
+
+<%
+    if (session.getAttribute("isLoggedIn") != null) {
+        out.print("<h1>Well done, you managed to log in!!!</h1>");
+        out.print("<form action=\"/LogoutServlet\" method=\"POST\">");
+        out.print("<input type=\"submit\" value=\"Log out\" />");
+        out.print("</form>");
+
+    } else {
+        out.print("<h1>Not logged in!!</h1>");
+        response.sendRedirect("index.jsp");
+    }
+%>
+
 </body>
 </html>
