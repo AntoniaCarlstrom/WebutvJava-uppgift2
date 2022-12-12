@@ -32,6 +32,11 @@ public class LoginServlet extends HttpServlet {
         String userName = user.getUserName();
 
         if (userName.equals("Antonia") && passWord.equals("hejhej") || userName.equals("Admin") && passWord.equals("hejhej2")) {
+            UserBean userBean = new UserBean();
+            userBean.setPassWord(passWord);
+            userBean.setUserName(userName);
+            request.setAttribute("UserBean", userBean);
+
             HttpSession httpSession = request.getSession();
             httpSession.setAttribute("isLoggedIn", "session");
             RequestDispatcher rd = request.getRequestDispatcher("loggedIn.jsp");

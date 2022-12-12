@@ -1,4 +1,4 @@
-
+<%@ page import="model.UserBean" %>
 <%--
   Created by IntelliJ IDEA.
   User: New user
@@ -14,7 +14,8 @@
 
 <%
     if (session.getAttribute("isLoggedIn") != null) {
-        out.print("<h1>Well done, you managed to log in!!!</h1>");
+        UserBean userBean = (UserBean) request.getAttribute("UserBean");
+        out.println("<h1>Snyggt jobbat, " + userBean.getUserName() + ", du loggade in!</h1>");
         out.print("<form action=\"/LogoutServlet\" method=\"POST\">");
         out.print("<input type=\"submit\" value=\"Log out\" />");
         out.print("</form>");
